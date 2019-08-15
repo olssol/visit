@@ -1,0 +1,317 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={visit Simulation Report},
+            pdfauthor={visit package},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{visit Simulation Report}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{visit package}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2019-08-14}
+
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\clearpage
+
+\hypertarget{simulation-parameters}{%
+\section{Simulation Parameters}\label{simulation-parameters}}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Variables & Values\tabularnewline
+\midrule
+\endhead
+Number of doses & 4\tabularnewline
+decision cuts & 0.65, 0.65, 0.65\tabularnewline
+etas & 0.1, 0.3\tabularnewline
+probability model & NONPARA\tabularnewline
+cohort size & 5\tabularnewline
+level size & 10\tabularnewline
+n rep & 100\tabularnewline
+n core & 1\tabularnewline
+\bottomrule
+\end{longtable}
+
+\clearpage
+
+\hypertarget{trueps-plots}{%
+\section{Trueps Plots}\label{trueps-plots}}
+
+\hypertarget{trueps-plots-1}{%
+\subsection{Trueps Plots 1}\label{trueps-plots-1}}
+
+Probability of DLT risk and immune response:
+
+\begin{verbatim}
+## [1] "No scenario plot was generated from this session."
+\end{verbatim}
+
+\clearpage
+
+\hypertarget{trueps-plots-2}{%
+\subsection{Trueps Plots 2}\label{trueps-plots-2}}
+
+Probability of each scenario:
+
+\begin{verbatim}
+## [1] "No scenario plot was generated from this session."
+\end{verbatim}
+
+\clearpage
+
+\hypertarget{simulation-results}{%
+\section{Simulation Results}\label{simulation-results}}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & 1 & 2 & 3 & 4 \\ 
+  \hline
+Frequency & 46.00 & 19.00 & 8.00 & 2.00 \\ 
+  \% & 46.00 & 19.00 & 8.00 & 2.00 \\ 
+   \hline
+\end{tabular}
+\end{table}
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+  \hline
+ & stage 1 & stage 2 & total \\ 
+  \hline
+level 1 & 5.00 & 3.90 & 8.90 \\ 
+  level 2 & 3.75 & 2.15 & 5.90 \\ 
+  level 3 & 1.45 & 0.65 & 2.10 \\ 
+  level 4 & 0.50 & 0.25 & 0.75 \\ 
+   \hline
+\end{tabular}
+\end{table}
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrr}
+  \hline
+ & No T, No R & No T, R & T, No R & T,R & T & R \\ 
+  \hline
+level 1 stage 1 & 3.27 & 0.85 & 0.74 & 0.14 & 0.88 & 0.99 \\ 
+  level 1 stage 2 & 2.28 & 0.70 & 0.67 & 0.25 & 0.92 & 0.95 \\ 
+  level 1 total & 5.55 & 1.55 & 1.41 & 0.39 & 1.80 & 1.94 \\ 
+  level 2 stage 1 & 2.34 & 0.63 & 0.55 & 0.23 & 0.78 & 0.86 \\ 
+  level 2 stage 2 & 1.41 & 0.31 & 0.34 & 0.09 & 0.43 & 0.40 \\ 
+  level 2 total & 3.75 & 0.94 & 0.89 & 0.32 & 1.21 & 1.26 \\ 
+  level 3 stage 1 & 0.87 & 0.27 & 0.25 & 0.06 & 0.31 & 0.33 \\ 
+  level 3 stage 2 & 0.42 & 0.13 & 0.06 & 0.04 & 0.10 & 0.17 \\ 
+  level 3 total & 1.29 & 0.40 & 0.31 & 0.10 & 0.41 & 0.50 \\ 
+  level 4 stage 1 & 0.28 & 0.10 & 0.08 & 0.04 & 0.12 & 0.14 \\ 
+  level 4 stage 2 & 0.18 & 0.01 & 0.05 & 0.01 & 0.06 & 0.02 \\ 
+  level 4 total & 0.46 & 0.11 & 0.13 & 0.05 & 0.18 & 0.16 \\ 
+   \hline
+\end{tabular}
+\end{table}
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrr}
+  \hline
+ & N & Toxic & Ineffective & Safe,Effective & Effective,Safety concern \\ 
+  \hline
+level 1 stage 1 & 100.00 & 22.00 & 0.00 & 0.00 & 78.00 \\ 
+  level 1 stage 2 & 78.00 & 3.85 & 0.00 & 12.82 & 83.33 \\ 
+  level 2 stage 1 & 75.00 & 28.00 & 14.67 & 0.00 & 57.33 \\ 
+  level 2 stage 2 & 43.00 & 0.00 & 32.56 & 4.65 & 62.79 \\ 
+  level 3 stage 1 & 29.00 & 34.48 & 20.69 & 0.00 & 44.83 \\ 
+  level 3 stage 2 & 13.00 & 0.00 & 23.08 & 7.69 & 69.23 \\ 
+  level 4 stage 1 & 10.00 & 30.00 & 20.00 & 0.00 & 50.00 \\ 
+  level 4 stage 2 & 5.00 & 20.00 & 40.00 & 0.00 & 40.00 \\ 
+   \hline
+\end{tabular}
+\end{table}
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Toxic & Ineffective & Safe,Effective & Effective,Safety concern \\ 
+  \hline
+level 1 stage 1 & 0.38 & 0.00 & 0.22 & 0.39 \\ 
+  level 1 stage 2 & 0.28 & 0.00 & 0.22 & 0.49 \\ 
+  level 2 stage 1 & 0.43 & 0.27 & 0.09 & 0.20 \\ 
+  level 2 stage 2 & 0.24 & 0.37 & 0.10 & 0.29 \\ 
+  level 3 stage 1 & 0.44 & 0.27 & 0.10 & 0.18 \\ 
+  level 3 stage 2 & 0.18 & 0.35 & 0.15 & 0.32 \\ 
+  level 4 stage 1 & 0.47 & 0.28 & 0.08 & 0.17 \\ 
+  level 4 stage 2 & 0.29 & 0.45 & 0.06 & 0.19 \\ 
+   \hline
+\end{tabular}
+\end{table}
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+  \hline
+ & Mean & LB & UB \\ 
+  \hline
+level 1 stage 1 & 0.27 & 0.14 & 0.50 \\ 
+  level 1 stage 2 & 0.23 & 0.08 & 0.42 \\ 
+  level 2 stage 1 & 0.29 & 0.14 & 0.57 \\ 
+  level 2 stage 2 & 0.21 & 0.08 & 0.34 \\ 
+  level 3 stage 1 & 0.30 & 0.14 & 0.47 \\ 
+  level 3 stage 2 & 0.19 & 0.08 & 0.31 \\ 
+  level 4 stage 1 & 0.31 & 0.14 & 0.54 \\ 
+  level 4 stage 2 & 0.23 & 0.17 & 0.40 \\ 
+   \hline
+\end{tabular}
+\end{table}
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+  \hline
+ & Mean & LB & UB \\ 
+  \hline
+level 1 stage 1 & 0.28 & 0.14 & 0.43 \\ 
+  level 1 stage 2 & 0.26 & 0.08 & 0.43 \\ 
+  level 2 stage 1 & 0.31 & 0.14 & 0.57 \\ 
+  level 2 stage 2 & 0.27 & 0.16 & 0.42 \\ 
+  level 3 stage 1 & 0.31 & 0.14 & 0.57 \\ 
+  level 3 stage 2 & 0.33 & 0.17 & 0.50 \\ 
+  level 4 stage 1 & 0.34 & 0.17 & 0.54 \\ 
+  level 4 stage 2 & 0.27 & 0.17 & 0.41 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\hypertarget{observation}{%
+\section{Observation}\label{observation}}
+
+vtTrack Plots\\
+\includegraphics{report_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+1 & 2 & 3 & 4 & 5 \\ 
+  \hline
+1 & 0 & 0 & 0 & 0 \\ 
+  2 & 0 & 0 & 0 & 0 \\ 
+  3 & 0 & 0 & 0 & 0 \\ 
+  4 & 0 & 0 & 0 & 0 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\hypertarget{observation-interim}{%
+\section{Observation Interim}\label{observation-interim}}
+
+\begin{verbatim}
+## 
+## Level 1
+\end{verbatim}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{verbatim}
+## 
+## Level 2
+\end{verbatim}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-4-2.pdf}
+
+\begin{verbatim}
+## 
+## Level 3
+\end{verbatim}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-4-3.pdf}
+
+\begin{verbatim}
+## 
+## Level 4
+\end{verbatim}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-4-4.pdf}
+
+
+\end{document}
