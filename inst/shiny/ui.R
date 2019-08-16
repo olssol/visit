@@ -8,8 +8,6 @@ shinyUI(
         tags$script(src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML", type="text/javascript")
         ),
 
-        # Title Box
-
 
         withTags({
             div(class = "cheader",

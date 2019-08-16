@@ -16,7 +16,7 @@ vtSingleTrial(trueps, size.cohort = 3, size.level = NULL,
 
 \item{size.level}{Maximum number of patients for each dose level}
 
-\item{etas}{Length 2 vector representing \eqn{(p_L, p_U)}. \eqn{p_L}: lower
+\item{etas}{Vector of length 2 representing \eqn{(p_L, p_U)}. \eqn{p_L}: lower
 bound of DLT risk, below which the current dose is considered absolutely
 safe; \eqn{p_U}: upper bound of DLT risk above which the current dose is
 considered too toxic}
@@ -27,13 +27,13 @@ than \eqn{3}, it is repeated to have \eqn{3} elements. See
 
 \item{prob.mdl}{Option of the probability models:
 
-\itemize{\item{NONPARA:}{non-parametric+ model}
+\itemize{\item{NONPARA: }{non-parametric+ model}
 
- \item{NONPARA+:}{non-parametric model}
+ \item{NONPARA+: }{non-parametric model}
 
-\item{PARA:}{partially parametric model}
+\item{PARA: }{partially parametric model}
 
-\item{PARA+:}{partially parametric+ model} }
+\item{PARA+: }{partially parametric+ model} }
 
 Default value is \code{NONPARA}. See \code{\link{visit}} for details.}
 

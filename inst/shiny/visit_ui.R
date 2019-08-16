@@ -1,13 +1,14 @@
-##constants in the package
+# Constants in the package
 get.shinyConst <- reactive ({
-    rst <- list(REGIONS   = c("Toxic", "Ineffective", "Safe,Effective", "Effective,Safety concern"),
-    THETA     = c("No DLT, No Response", "No DLT, Response",
-    "DLT, No Response", "DLT, Response"),
-    CLSPRIOR  = "VTPRIOR",
-    CLSPOST   = "VTPOST",
-    CLSTRUEPS = "VTTRUEPS",
-    CLSSIMU   = "VTSIMU",
-    CLSDEC    = "VTDEC");
+    rst <- list(REGIONS = c("Toxic", "Ineffective", "Safe,Effective", "Effective,Safety concern"),
+        THETA     = c("No DLT, No Response", "No DLT, Response",
+        "DLT, No Response", "DLT, Response"),
+        CLSPRIOR  = "VTPRIOR",
+        CLSPOST   = "VTPOST",
+        CLSTRUEPS = "VTTRUEPS",
+        CLSSIMU   = "VTSIMU",
+        CLSDEC    = "VTDEC"
+    );
     
     rst$DENLEGEND <- c("Toxicity Rate", "Response Rate", rst$THETA);
     return(rst);
@@ -61,9 +62,11 @@ page.about <- function() {
         fluidRow(
             column(8,
                 wellPanel(
-                    h4("What is VISIT?"),
-                    h6("sample text"),
-                    style = 'height: 500px; padding-left: 30px;'
+                    fluidRow(
+                        withMathJax(includeHTML('www/text.HTML')),
+                        style = 'padding-left: 30px; padding-right: 30px;'
+                    ),
+                    style = 'padding-left: 30px;'
                 ),
                 offset = 2
             )
@@ -91,7 +94,7 @@ page.design <- function() {
 page.param <- function() {
     wellPanel(
         fluidRow(
-            h4("Main Parameters"),
+            h4("Design Parameters"),
             style = 'margin-left: 20px; border-bottom: 2px solid #E3E3E3; margin-right: 20px; margin-bottom: 20px'
         ),
         fluidRow(
@@ -108,56 +111,89 @@ page.param <- function() {
                         ),
                         offset = 1
                     ),
-                    style = 'margin-top: 71px; margin-bottom: 71px;'
+                    style = 'margin-top: 127px; margin-bottom: 127px;'
                 ),
                 style = 'border-right: 2px solid #E3E3E3;'
             ),
             column(6,
-                column(5,
-                    numericInput(
-                        inputId = "dec.cut1",
-                        label = "Decision Cut 1",
-                        value = 0.65,
-                        min = 0,
-                        max = 1,
-                        step = 0.05
+                fluidRow(
+                    column(5,
+                        numericInput(
+                            inputId = "size.cohort",
+                            label = "Cohort Size",
+                            value = 5,
+                            min = 0,
+                            step = 1
+                        ),
+                        style = 'padding: 20px; margin-left: 24px; padding-bottom: 0px; padding-top: 10px;'
                     ),
-                    numericInput(
-                        inputId = "dec.cut2",
-                        label = "Decision Cut 2",
-                        value = 0.65,
-                        min = 0,
-                        max = 1,
-                        step = 0.05
-                    ),
-                    numericInput(
-                        inputId = "dec.cut3",
-                        label = "Decision Cut 3",
-                        value = 0.65,
-                        min = 0,
-                        max = 1,
-                        step = 0.05
-                    ),
-                    style = 'padding: 20px; margin-left: 24px;'
+                    column(5,
+                        numericInput(
+                            inputId = "size.level",
+                            label = "Level Size",
+                            value = 10,
+                            min = 0,
+                            step = 1
+                        ),
+                        style = 'padding: 20px; margin-left: 17px; padding-bottom: 0px; padding-top: 10px;'
+                    )
                 ),
-                column(5,
-                    numericInput(
-                        inputId = "etas1",
-                        label = "Etas 1",
-                        value = 0.1,
-                        min = 0,
-                        max = 1,
-                        step = 0.05
+                fluidRow(
+                    column(5,
+                        numericInput(
+                            inputId = "etas1",
+                            label = "Lower boundary of DLT risk",
+                            value = 0.1,
+                            min = 0,
+                            max = 1,
+                            step = 0.05
+                        ),
+                        style = 'padding: 20px; margin-left: 24px; padding-bottom: 5px;'
                     ),
-                    numericInput(
-                        inputId = "etas2",
-                        label = "Etas 2",
-                        value = 0.3,
-                        min = 0,
-                        max = 1,
-                        step = 0.05
+                    column(5,
+                        numericInput(
+                            inputId = "etas2",
+                            label = "Upper boundary of DLT risk",
+                            value = 0.3,
+                            min = 0,
+                            max = 1,
+                            step = 0.05
+                        ),
+                        style = 'padding: 20px; margin-left: 17px; padding-bottom: 5px;'
                     ),
-                    style = 'padding: 20px; margin-left: 17px;'
+                    style = 'text-align: center;'
+                ),
+                fluidRow(
+                    column(5,
+                        numericInput(
+                            inputId = "dec.cut1",
+                            label = "C1",
+                            value = 0.65,
+                            min = 0,
+                            max = 1,
+                            step = 0.05
+                        ),
+                        numericInput(
+                            inputId = "dec.cut3",
+                            label = "C3",
+                            value = 0.65,
+                            min = 0,
+                            max = 1,
+                            step = 0.05
+                        ),
+                        style = 'padding: 20px; margin-left: 24px; padding-top: 5px;'
+                    ),
+                    column(5,
+                        numericInput(
+                            inputId = "dec.cut2",
+                            label = "C2",
+                            value = 0.65,
+                            min = 0,
+                            max = 1,
+                            step = 0.05
+                        ),
+                        style = 'padding: 20px; margin-left: 17px;padding-top: 5px;'
+                    )
                 )
             )
         )
@@ -175,7 +211,10 @@ page.prior <- function() {
                 radioButtons(
                     inputId = "probmdl",
                     label = "",
-                    choices = c("NONPARA", "NONPARA+", "PARA", "PARA+"),
+                    choices = c("Non-Parametric" = "NONPARA",
+                                "Non-Parametric+" = "NONPARA+",
+                                "Parametric" = "PARA",
+                                "Parametric+" = "PARA+"),
                     selected = "NONPARA"
                 ),
                 style = 'margin-left: 40px; margin-bottom:40px; margin-top: 20px;'
@@ -345,37 +384,20 @@ page.simu_options <- function() {
                         style = 'margin-left: 20px; border-bottom: 2px solid #E3E3E3; margin-right: 20px;'
                     ),
                     fluidRow(
-                        column(3,
-                            numericInput(
-                                inputId = "size.cohort",
-                                label = "Cohort Size",
-                                value = 5,
-                                min = 0,
-                                step = 1
-                            )
-                        ),
-                        column(3,
-                            numericInput(
-                                inputId = "size.level",
-                                label = "Level Size",
-                                value = 10,
-                                min = 0,
-                                step = 1
-                            )
-                        ),
-                        column(3,
+                        column(5,
                             numericInput(
                                 inputId = "n.rep",
-                                label = "n.rep",
+                                label = "Number of Replications",
                                 value = 100,
                                 min = 1,
                                 step = 1
-                            )
+                            ),
+                            offset = 1
                         ),
-                        column(3,
+                        column(5,
                             numericInput(
                                 inputId = "n.cores",
-                                label = "n.cores",
+                                label = "Number of Cores",
                                 value = 1,
                                 min = 1,
                                 step = 1
@@ -386,14 +408,14 @@ page.simu_options <- function() {
                 ),
                 wellPanel(
                     fluidRow(
-                        h4("TRUEPS"),
+                        withMathJax(HTML("<h4>Specify true probabilities: \\(&theta;_{00}, &theta;_{11}, &theta;_{01} , &theta;_{10}\\)</h4>")),
                         style = 'margin-left: 20px; border-bottom: 2px solid #E3E3E3; margin-right: 20px;'
                     ),
                     fluidRow(
                         column(4,
                             radioButtons(
                                 inputId = "scenarioInput",
-                                label = "Input methods",
+                                label = "Type",
                                 choices = c("Probability by Odds Ratio", "Probability"),
                                 selected = "Probability by Odds Ratio"
                             ),
@@ -597,7 +619,7 @@ page.simu_options <- function() {
                         column(2,
                             actionButton(
                                 inputId = "scenarioButton",
-                                label = "View TRUEPS",
+                                label = "Simulation Scenario",
                                 width = '130px'
                             ),
                             offset = 2
@@ -633,7 +655,7 @@ page.simu_result <- function() {
 page.simu_output <- function(l) {
     result <- list();
     for (i in 1:l) {
-        result[[i]] <- tabPanel(paste("Result", i), tableOutput(paste0("rst.", i)));
+        result[[i]] <- tabPanel(paste("Result", i), uiOutput(paste0("rst.", i)));
     }
     result <- do.call(navlistPanel, c(id = 'r', "", result, well = FALSE, list(widths = c(3, 7))));
     result;
@@ -652,7 +674,7 @@ page.analysis <- function() {
             column(8,
                 wellPanel(
                     fluidRow(
-                        h4("Real Data Analysis"),
+                        h4("Interim Data Analysis"),
                         style = 'margin-left: 20px; border-bottom: 2px solid #E3E3E3; margin-right: 20px;'
                     ),
                     fluidRow(
@@ -762,7 +784,7 @@ page.analysis <- function() {
                         column(2,
                             actionButton(
                                 inputId = "realButton",
-                                label = "Submit",
+                                label = "Conduct Analysis",
                                 width = '100%'
                             ),
                             offset = 2
@@ -799,7 +821,7 @@ page.report <- function() {
             column(8,
                 wellPanel(
                     fluidRow(
-                        h4("Export and Import Data"),
+                        h4("Export and Import Current Settings"),
                         style = 'margin-left: 20px; border-bottom: 2px solid #E3E3E3; margin-right: 20px;'
                     ),
                     fluidRow(
@@ -822,7 +844,7 @@ page.report <- function() {
                 ),
                 wellPanel(
                     fluidRow(
-                        h4("Download Report"),
+                        h4("Download Report Analysis"),
                         style = 'margin-left: 20px; border-bottom: 2px solid #E3E3E3; margin-right: 20px;'
                     ),
                     fluidRow(

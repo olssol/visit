@@ -111,14 +111,14 @@ vtDecMap <- function(thetas, etas, prev.res=0, dec.cut=0.6) {
 #' @return
 #' A class \code{VTDEC} list containing
 #' \itemize{
-#' \item{prob}{Probabilities of each decision map region}
-#' \item{region}{The region selected based on the sequential procedure described in \code{\link{visit}} }
-#' \item{ptox}{Mean risk of DLT, \eqn{E(p^{(l)})}}
-#' \item{pres}{Mean immune response rate, \eqn{E(q^{(l)})}}
-#' \item{con.prob}{Conditional probabilities of each decision map region}
-#' \item{prev.res}{Function parameter}
-#' \item{etas}{Function parameter}
-#' \item{dec.cut}{Function parameter}
+#' \item{prob: }{Probabilities of each decision map region}
+#' \item{region: }{The region selected based on the sequential procedure described in \code{\link{visit}} }
+#' \item{ptox: }{Mean risk of DLT, \eqn{E(p^{(l)})}}
+#' \item{pres: }{Mean immune response rate, \eqn{E(q^{(l)})}}
+#' \item{con.prob: }{Conditional probabilities of each decision map region}
+#' \item{prev.res: }{Function parameter}
+#' \item{etas: }{Function parameter}
+#' \item{dec.cut: }{Function parameter}
 #' }
 #'
 #' @examples
@@ -276,9 +276,9 @@ plot.VTDEC <- function(x,
 #' @param cex.txt Text size of numbers in the plot
 #' @param decision Dose escalation decision. The options are
 #' \itemize{
-#' \item{\code{1}:}{Escalate}
-#' \item{\code{2}:}{Continue at the same level}
-#' \item{\code{3}:}{Stop the trial}
+#' \item{\code{1}: }{Escalate}
+#' \item{\code{2}: }{Continue at the same level}
+#' \item{\code{3}: }{Stop the trial}
 #' }
 #'
 #' @param max.level Maximum number of dose levels shown in the plot

@@ -171,21 +171,21 @@ NULL
 #'     represents the observed data from dose level \eqn{k}. The columns are
 #'
 #' \itemize{
-#'     \item{column 1:}{number of patient with no DLT, no immune response}
-#'     \item{column 2:}{number of patient with no DLT, immune response}
-#'     \item{column 3:}{number of patient with DLT, no immune response}
-#'     \item{column 4:}{number of patient with DLT, immune response}
+#'     \item{column 1: }{number of patient with no DLT, no immune response}
+#'     \item{column 2: }{number of patient with no DLT, immune response}
+#'     \item{column 3: }{number of patient with DLT, no immune response}
+#'     \item{column 4: }{number of patient with DLT, immune response}
 #' }
 #'
 #' @param prob.mdl Option of the probability models:
 #'
-#' \itemize{\item{NONPARA:}{non-parametric+ model}
+#' \itemize{\item{NONPARA: }{non-parametric+ model}
 #'
-#'  \item{NONPARA+:}{non-parametric model}
+#'  \item{NONPARA+: }{non-parametric model}
 #'
-#' \item{PARA:}{partially parametric model}
+#' \item{PARA: }{partially parametric model}
 #'
-#' \item{PARA+:}{partially parametric+ model} }
+#' \item{PARA+: }{partially parametric+ model} }
 #'
 #' Default value is \code{NONPARA}. See \code{\link{visit}} for details.
 #'
@@ -193,7 +193,7 @@ NULL
 #'     \code{\link{vtPriorPar}} for \code{PARA} and \code{PARA+} model.
 #'
 #'
-#' @param etas Length 2 vector representing \eqn{(p_L, p_U)}. \eqn{p_L}: lower
+#' @param etas Vector of length 2 representing \eqn{(p_L, p_U)}. \eqn{p_L}: lower
 #'     bound of DLT risk, below which the current dose is considered absolutely
 #'     safe; \eqn{p_U}: upper bound of DLT risk above which the current dose is
 #'     considered too toxic

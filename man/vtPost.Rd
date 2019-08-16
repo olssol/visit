@@ -12,21 +12,21 @@ vtPost(obs.y, prob.mdl = c("NONPARA", "NONPARA+", "PARA", "PARA+"),
     represents the observed data from dose level \eqn{k}. The columns are
 
 \itemize{
-    \item{column 1:}{number of patient with no DLT, no immune response}
-    \item{column 2:}{number of patient with no DLT, immune response}
-    \item{column 3:}{number of patient with DLT, no immune response}
-    \item{column 4:}{number of patient with DLT, immune response}
+    \item{column 1: }{number of patient with no DLT, no immune response}
+    \item{column 2: }{number of patient with no DLT, immune response}
+    \item{column 3: }{number of patient with DLT, no immune response}
+    \item{column 4: }{number of patient with DLT, immune response}
 }}
 
 \item{prob.mdl}{Option of the probability models:
 
-\itemize{\item{NONPARA:}{non-parametric+ model}
+\itemize{\item{NONPARA: }{non-parametric+ model}
 
- \item{NONPARA+:}{non-parametric model}
+ \item{NONPARA+: }{non-parametric model}
 
-\item{PARA:}{partially parametric model}
+\item{PARA: }{partially parametric model}
 
-\item{PARA+:}{partially parametric+ model} }
+\item{PARA+: }{partially parametric+ model} }
 
 Default value is \code{NONPARA}. See \code{\link{visit}} for details.}
 

@@ -12,10 +12,10 @@ vtStan(obs.y, priors, model = 0, iter = 4000, chains = 4,
     represents the observed data from dose level \eqn{k}. The columns are
 
 \itemize{
-    \item{column 1:}{number of patient with no DLT, no immune response}
-    \item{column 2:}{number of patient with no DLT, immune response}
-    \item{column 3:}{number of patient with DLT, no immune response}
-    \item{column 4:}{number of patient with DLT, immune response}
+    \item{column 1: }{number of patient with no DLT, no immune response}
+    \item{column 2: }{number of patient with no DLT, immune response}
+    \item{column 3: }{number of patient with DLT, no immune response}
+    \item{column 4: }{number of patient with DLT, immune response}
 }}
 
 \item{priors}{A class \code{VTPRIOR} object created by

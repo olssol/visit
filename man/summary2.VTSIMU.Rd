@@ -13,13 +13,13 @@
 }
 \value{
 A numeric array that shows 1: number of times each level is selected,
-    2. total number of times any level is selected, 3. 1: frequency each
+    2. total number of times any level is selected, 3. frequency each
     level is selected, 4. frequency any level is selected, 5. average number
     of DLT's and responders for each level, 6. average total number of DLT's
     and responders
 }
 \description{
-Summarize simulation results to get frequency of a dose level is identified
+Summarize simulation results to get the frequency of a dose level is identified
 as the optimal dose level and the number of DLT's and responses
 }
 \examples{

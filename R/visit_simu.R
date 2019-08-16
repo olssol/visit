@@ -322,7 +322,7 @@ vtSimu <- function(n.rep=100, ..., n.cores=1, update.progress=NULL) {
 
 #' Summarize simulation results
 #'
-#' Summarize simulation results to get frequency of a dose level is identified
+#' Summarize simulation results to get the frequency of a dose level is identified
 #' as the optimal dose level and the number of DLT's and responses
 #'
 #' @rdname summary2.VTSIMU
@@ -332,7 +332,7 @@ vtSimu <- function(n.rep=100, ..., n.cores=1, update.progress=NULL) {
 #'
 #'
 #' @return A numeric array that shows 1: number of times each level is selected,
-#'     2. total number of times any level is selected, 3. 1: frequency each
+#'     2. total number of times any level is selected, 3. frequency each
 #'     level is selected, 4. frequency any level is selected, 5. average number
 #'     of DLT's and responders for each level, 6. average total number of DLT's
 #'     and responders
@@ -547,17 +547,17 @@ summary2.VTTRUEPS <- function(x, rp2d = -1, digits = 2, ...) {
 #'
 #' A list containing
 #' \itemize{
-#' \item{dose}{Frequency for each dose level being selected as the optimal dose level}
-#' \item{npat}{Average number of patients for each cohort and each dose level}
-#' \item{samples}{Average number of DLT risks and responses for each cohort on each dose level}
-#' \item{decision}{Frequency each region in the decision map is selected for each cohort on each dose level}
+#' \item{dose}{: Frequency for each dose level being selected as the optimal dose level}
+#' \item{npat}{: Average number of patients for each cohort and each dose level}
+#' \item{samples}{: Average number of DLT risks and responses for each cohort on each dose level}
+#' \item{decision}{: Frequency each region in the decision map is selected for each cohort on each dose level}
 #'
-#' \item{prob}{Average conditional probabilities corresponding to each region in
+#' \item{prob}{: Average conditional probabilities corresponding to each region in
 #' the decision map for each cohort on each dose level}
 #'
-#' \item{ptox}{Mean and credible interval of DLT risk rates for each cohort on each dose level}
+#' \item{ptox}{: Mean and credible interval of DLT risk rates for each cohort on each dose level}
 #'
-#' \item{ptox}{Mean and credible interval of immune response rates for each cohort on each dose level}
+#' \item{pres}{: Mean and credible interval of immune response rates for each cohort on each dose level}
 #' }
 #'
 #' @examples

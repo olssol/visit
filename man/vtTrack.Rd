@@ -18,9 +18,9 @@ correspond to columns 1-4 in \code{obs.y} for \code{\link{vtPost}}.}
 
 \item{decision}{Dose escalation decision. The options are
 \itemize{
-\item{\code{1}:}{Escalate}
-\item{\code{2}:}{Continue at the same level}
-\item{\code{3}:}{Stop the trial}
+\item{\code{1}: }{Escalate}
+\item{\code{2}: }{Continue at the same level}
+\item{\code{3}: }{Stop the trial}
 }}
 
 \item{max.level}{Maximum number of dose levels shown in the plot}

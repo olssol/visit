@@ -20,7 +20,7 @@ This can be a scalar representing the mean of the response rate
 \eqn{E(q^{(l-1)})}, or a vector of posterior samples of the response rate
 \eqn{q^{(l-1)}}. For \eqn{l=1}, this value is set to \eqn{0}.}
 
-\item{etas}{Length 2 vector representing \eqn{(p_L, p_U)}. \eqn{p_L}: lower
+\item{etas}{Vector of length 2 representing \eqn{(p_L, p_U)}. \eqn{p_L}: lower
 bound of DLT risk, below which the current dose is considered absolutely
 safe; \eqn{p_U}: upper bound of DLT risk above which the current dose is
 considered too toxic}
@@ -34,13 +34,13 @@ than \eqn{3}, it is repeated to have \eqn{3} elements. See
 
 \item{prob.mdl}{Option of the probability models:
 
-\itemize{\item{NONPARA:}{non-parametric+ model}
+\itemize{\item{NONPARA: }{non-parametric+ model}
 
- \item{NONPARA+:}{non-parametric model}
+ \item{NONPARA+: }{non-parametric model}
 
-\item{PARA:}{partially parametric model}
+\item{PARA: }{partially parametric model}
 
-\item{PARA+:}{partially parametric+ model} }
+\item{PARA+: }{partially parametric+ model} }
 
 Default value is \code{NONPARA}. See \code{\link{visit}} for details.}
 
@@ -49,14 +49,14 @@ Default value is \code{NONPARA}. See \code{\link{visit}} for details.}
 \value{
 A class \code{VTDEC} list containing
 \itemize{
-\item{prob}{Probabilities of each decision map region}
-\item{region}{The region selected based on the sequential procedure described in \code{\link{visit}} }
-\item{ptox}{Mean risk of DLT, \eqn{E(p^{(l)})}}
-\item{pres}{Mean immune response rate, \eqn{E(q^{(l)})}}
-\item{con.prob}{Conditional probabilities of each decision map region}
-\item{prev.res}{Function parameter}
-\item{etas}{Function parameter}
-\item{dec.cut}{Function parameter}
+\item{prob: }{Probabilities of each decision map region}
+\item{region: }{The region selected based on the sequential procedure described in \code{\link{visit}} }
+\item{ptox: }{Mean risk of DLT, \eqn{E(p^{(l)})}}
+\item{pres: }{Mean immune response rate, \eqn{E(q^{(l)})}}
+\item{con.prob: }{Conditional probabilities of each decision map region}
+\item{prev.res: }{Function parameter}
+\item{etas: }{Function parameter}
+\item{dec.cut: }{Function parameter}
 }
 }
 \description{

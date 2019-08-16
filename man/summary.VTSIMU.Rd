@@ -14,17 +14,17 @@
 \value{
 A list containing
 \itemize{
-\item{dose}{Frequency for each dose level being selected as the optimal dose level}
-\item{npat}{Average number of patients for each cohort and each dose level}
-\item{samples}{Average number of DLT risks and responses for each cohort on each dose level}
-\item{decision}{Frequency each region in the decision map is selected for each cohort on each dose level}
+\item{dose}{: Frequency for each dose level being selected as the optimal dose level}
+\item{npat}{: Average number of patients for each cohort and each dose level}
+\item{samples}{: Average number of DLT risks and responses for each cohort on each dose level}
+\item{decision}{: Frequency each region in the decision map is selected for each cohort on each dose level}
 
-\item{prob}{Average conditional probabilities corresponding to each region in
+\item{prob}{: Average conditional probabilities corresponding to each region in
 the decision map for each cohort on each dose level}
 
-\item{ptox}{Mean and credible interval of DLT risk rates for each cohort on each dose level}
+\item{ptox}{: Mean and credible interval of DLT risk rates for each cohort on each dose level}
 
-\item{ptox}{Mean and credible interval of immune response rates for each cohort on each dose level}
+\item{pres}{: Mean and credible interval of immune response rates for each cohort on each dose level}
 }
 }
 \description{

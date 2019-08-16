@@ -1,8 +1,12 @@
+require(xtable);
+require(devtools);
+load_all();
+
+
 
 shinyServer(function(input, output, session) {
     
     source("visit_ui.R");
-    
 
     output$mainpage <- renderUI({
         tabpanel.all();
@@ -46,7 +50,7 @@ shinyServer(function(input, output, session) {
             }
             
             if (any(sm < 0)) {
-                error <- append(error, "Error: Incorrect values for probability. All values should be integers greater than or equal to 0.");
+                error <- append(error, "Error: Incorrect values for probability. All values should be nonnegative integers.");
             } else {
                 for (i in 1:NROW(sm)) {
                     if (sum(sm[i,]) > 0) {
@@ -167,24 +171,24 @@ shinyServer(function(input, output, session) {
         # Check for NA
         decisions <- c(input$dec.cut1, input$dec.cut2, input$dec.cut3, input$etas1, input$etas2)
         if(any(is.na(decisions))) {
-            error <- append(error, "Error: Missing values for decision cut or etas.");
+            error <- append(error, "Error: Missing values for C1, C2, C3, or DLT boundary values.");
         }
         
         # Check for 0 < d < 1
         if(any(decisions < 0, na.rm = TRUE) || any(decisions > 1, na.rm = TRUE)) {
-            error <- append(error, "Error: Incorrect values for decision cut or etas. Please make sure all values are between 0 and 1, exclusive.");
+            error <- append(error, "Error: Incorrect values for C1, C2, C3, or DLT boundary values. Please make sure all values are between 0 and 1, exclusive.");
         }
         
         
         # Unlikely to Happen, but a check for NA probmdl
         if (any(is.na(input$probmdl)) || any(is.null(input$probmdl))) {
-            error <- append(error, "Error: No probability model chosen. Please selecte one from NONPARA and NONPARA+");
+            error <- append(error, "Error: No probability model chosen. Please selecte one from Non-Parametric and Non-Parametric+");
         }
         
         
         # Check for PARA and PARA+
         if (input$probmdl == 'PARA' || input$probmdl == 'PARA+') {
-            error <- append(error, "Error: PARA and PARA+ are unsupported as of this version of shiny website. Please perform the computation through R to bypass this issue.");
+            error <- append(error, "Error: Parametric and Parametric+ are unsupported as of this version of shiny website. Please perform the computation through R to bypass this issue.");
         }
         
 
@@ -195,7 +199,7 @@ shinyServer(function(input, output, session) {
             is.na(input$size.level) ||
             is.null(input$size.level) ||
             input$size.level <= 0) {
-            error <- append(error, "Error: Cohort size and level size should be integers greater than 0.");
+            error <- append(error, "Error: Cohort size and level size should be positive integers.");
         } else {
             if (input$size.level <= input$size.cohort) {
                 error <- append(error, "Error: Size level should be greater than cohort size.");
@@ -232,7 +236,7 @@ shinyServer(function(input, output, session) {
             }
             
             if (any(sm < 0)) {
-                error <- append(error, "Error: Incorrect values for probability. All values should be integers greater than or equal to 0.");
+                error <- append(error, "Error: Incorrect values for probability. All values should be nonnegative integers.");
             } else {
                 for (i in 1:NROW(sm)) {
                     if (sum(sm[i,]) > 0) {
@@ -372,19 +376,36 @@ shinyServer(function(input, output, session) {
                 fluidRow(
                     actionButton(
                         inputId = "simu",
-                        label = "Restart simulations"
+                        label = "Restart simulation"
                     ),
                     align = 'left',
-                    style = 'margin-left: 36px; margin-top: 20px !important;'
+                    style = 'margin-left: 25px; margin-top: 20px !important;'
                 )
             })
             
+            title <- c("dose: Frequency for each dose level being selected as the optimal dose level",
+                "npat: Average number of patients for each cohort and each dose level",
+                "samples: Average number of DLT risks and responses for each cohort on each dose level",
+                "decision: Frequency each region in the decision map is selected for each cohort on each dose level",
+                "prob: Average conditional probabilities corresponding to each region in the decision map for each cohort on each dose level",
+                "ptox: Mean and credible interval of DLT risk rates for each cohort on each dose level",
+                "pres: Mean and credible interval of immune response rates for each cohort on each dose level");
+                
             for (i in 1:(NROW(rst))) {
                 local({
                     s <- i;
                     table.name <- paste0("rst.", s);
-                    output[[table.name]] <- renderTable ({
-                        xtable(summary(rst)[[s]]);
+                    output[[table.name]] <- renderUI ({
+                        
+                        fluidRow(
+                            h3(
+                                title[s],
+                                style = 'text-align: left;'
+                            ),
+                            renderTable({
+                                xtable(summary(rst)[[s]]);
+                            })
+                        )
                     })
                 })
             }
@@ -406,12 +427,12 @@ shinyServer(function(input, output, session) {
         # Check for NA
         decisions <- c(input$dec.cut1, input$dec.cut2, input$dec.cut3, input$etas1, input$etas2)
         if(any(is.na(decisions))) {
-            error <- append(error, "Error: Missing values for decision cut or etas.");
+            error <- append(error, "Error: Missing values for C1, C2, C3, or DLT boundary values.");
         }
         
         # Check for 0 < d < 1
         if(any(decisions < 0, na.rm = TRUE) || any(decisions > 1, na.rm = TRUE)) {
-            error <- append(error, "Error: Incorrect values for decision cut or etas. Please make sure all values are between 0 and 1, exclusive.");
+            error <- append(error, "Error: Incorrect values for C1, C2, C3, or DLT boundary values. Please make sure all values are between 0 and 1, exclusive.");
         }
         
         
@@ -431,12 +452,12 @@ shinyServer(function(input, output, session) {
         
         # Check for negative numbers in m
         if (any(om < 0)) {
-            error <- append(error, "Error: Incorrect values for observed data. Values should be integers greater than or equal to 0. ");
+            error <- append(error, "Error: Incorrect values for observed data. Values should be positive integers. ");
         }
         
         
         # Check if input currentLevel is NA
-        if (is.na(input$currentLevel) || is.null(input$currentLevel)) {
+        if (is.na(input$currentLevel) || is.null(input$currentLevel) || input$currentLevel > input$ndose) {
             currentLevel <- input$ndose;
         } else {
             currentLevel <- input$currentLevel;
@@ -454,7 +475,7 @@ shinyServer(function(input, output, session) {
                     column(8,
                         wellPanel(
                             fluidRow(
-                                h4("vtTrack Plot"),
+                                h4("Track Plot"),
                                 style = 'margin-left: 20px; border-bottom: 2px solid #E3E3E3; margin-right: 20px;'
                             ),
                             fluidRow(
@@ -495,7 +516,7 @@ shinyServer(function(input, output, session) {
                     column(8,
                         wellPanel(
                             fluidRow(
-                                h4("vtInterim Plots"),
+                                h4("Decision Maps"),
                                 style = 'margin-left: 20px; border-bottom: 2px solid #E3E3E3; margin-right: 20px;'
                             ),
                             fluidRow(
@@ -616,7 +637,7 @@ shinyServer(function(input, output, session) {
                 updateNumericInput(
                     session,
                     inputId = "dec.cut1",
-                    label = "Decision Cut 1",
+                    label = "C1",
                     value = export$dec.cut[1],
                     min = 0,
                     max = 1,
@@ -626,7 +647,7 @@ shinyServer(function(input, output, session) {
                 updateNumericInput(
                     session,
                     inputId = "dec.cut2",
-                    label = "Decision Cut 2",
+                    label = "C2",
                     value = export$dec.cut[2],
                     min = 0,
                     max = 1,
@@ -636,7 +657,7 @@ shinyServer(function(input, output, session) {
                 updateNumericInput(
                     session,
                     inputId = "dec.cut3",
-                    label = "Decision Cut 3",
+                    label = "C3",
                     value = export$dec.cut[3],
                     min = 0,
                     max = 1,
@@ -646,7 +667,7 @@ shinyServer(function(input, output, session) {
                 updateNumericInput(
                     session,
                     inputId = "etas1",
-                    label = "Etas 1",
+                    label = "Lower boundary of DLT risk",
                     value = export$etas[1],
                     min = 0,
                     max = 1,
@@ -656,7 +677,7 @@ shinyServer(function(input, output, session) {
                 updateNumericInput(
                     session,
                     inputId = "etas2",
-                    label = "Etas 2",
+                    label = "Upper boundary of DLT risk",
                     value = export$etas[2],
                     min = 0,
                     max = 1,
@@ -667,7 +688,10 @@ shinyServer(function(input, output, session) {
                     session,
                     inputId = "probmdl",
                     label = "",
-                    choices = c("NONPARA", "NONPARA+", "PARA", "PARA+"),
+                    choices = c("Non-Parametric" = "NONPARA",
+                        "Non-Parametric+" = "NONPARA+",
+                        "Parametric" = "PARA",
+                        "Parametric+" = "PARA+"),
                     selected = export$probmdl
                 )
                 
@@ -692,7 +716,7 @@ shinyServer(function(input, output, session) {
                 updateNumericInput(
                     session,
                     inputId = "n.rep",
-                    label = "n.rep",
+                    label = "Number of Replications",
                     value = export$n.rep,
                     min = 1,
                     step = 1
@@ -701,7 +725,7 @@ shinyServer(function(input, output, session) {
                 updateNumericInput(
                     session,
                     inputId = "n.cores",
-                    label = "n.cores",
+                    label = "Number of Cores",
                     value = export$n.cores,
                     min = 1,
                     step = 1
@@ -710,7 +734,7 @@ shinyServer(function(input, output, session) {
                 updateRadioButtons(
                     session,
                     inputId = "scenarioInput",
-                    label = "Input methods",
+                    label = "Type",
                     choices = c("Probability by Odds Ratio", "Probability"),
                     selected = export$scenarioInput
                 )
@@ -784,7 +808,7 @@ shinyServer(function(input, output, session) {
                 updateTabsetPanel(session, "mainpanel", selected = "About")
                 
             } else {
-                writeError("Wrong .RData file. Please upload an  file that has been exported from VISIT. ")
+                writeError("Wrong .RData file. Please upload an file that has been exported from VISIT. ")
             }
         } else {
             writeError("Unexpected file. Please import a .RData file.")
