@@ -1,9 +1,3 @@
-require(xtable);
-require(devtools);
-load_all();
-
-
-
 shinyServer(function(input, output, session) {
     
     source("visit_ui.R");
@@ -131,7 +125,7 @@ shinyServer(function(input, output, session) {
                     column(12,
                         wellPanel(
                             fluidRow(
-                                h4("vtScenario Plots"),
+                                h4("Scenarios"),
                                 style = 'margin-left: 20px; border-bottom: 2px solid #E3E3E3; margin-right: 20px;'
                             ),
                             fluidRow(
