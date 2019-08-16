@@ -620,7 +620,7 @@ page.simu_options <- function() {
                             actionButton(
                                 inputId = "scenarioButton",
                                 label = "Simulation Scenario",
-                                width = '130px'
+                                width = '150px'
                             ),
                             offset = 2
                         ),
@@ -785,7 +785,7 @@ page.analysis <- function() {
                             actionButton(
                                 inputId = "realButton",
                                 label = "Conduct Analysis",
-                                width = '100%'
+                                width = '135px'
                             ),
                             offset = 2
                         ),
