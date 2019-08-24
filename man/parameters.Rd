@@ -45,6 +45,8 @@ than \eqn{3}, it is repeated to have \eqn{3} elements. See
 
 \item{digits}{Digits for print}
 
+\item{seed}{Random seed}
+
 \item{...}{Reserved parameters}
 }
 \description{

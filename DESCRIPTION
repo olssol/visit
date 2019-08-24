@@ -1,8 +1,10 @@
 Package: visit
 Title: Vaccine Phase I Design with Simultaneous Evaluation of Immnunogeneicity and Toxicity
-Version: 2.0
+Version: 2.1
 Author: Zilu Wang [aut, cre]
     Chenguang Wang [aut, cre]
+    Gary L Rosner [aut]
+    Richard BS Roden  [aut]
     Trustees of Columbia University [cph] (tools/make_cpp.R, R/stanmodels.R)
 Maintainer: Chenguang Wang <cwang68@jhmi.edu>
 Description: This package implements a Bayesian Phase I cancer vaccine
@@ -11,7 +13,7 @@ Description: This package implements a Bayesian Phase I cancer vaccine
     for further details.
 Depends:
     methods,
-    R (>= 3.4.0),
+    R (>= 3.5.0),
     rstan (>= 2.19.2),
     Rcpp (>= 1.0.2)
 License: GPL (>= 3)

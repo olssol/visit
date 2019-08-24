@@ -1,3 +1,7 @@
+library(devtools);
+load_all();
+library(xtable);
+
 shinyServer(function(input, output, session) {
     
     source("visit_ui.R");
@@ -315,6 +319,7 @@ shinyServer(function(input, output, session) {
             print(paste0("size.level: ", input$size.level));
             print(paste0("n.rep: ", input$n.rep));
             print(paste0("n.core: ", n.cores));
+            print(paste0("seed: ", input$seed1))
             print(paste0("trueps:"));
             print(sm);
             
@@ -330,6 +335,7 @@ shinyServer(function(input, output, session) {
             
             rst <- vtSimu(
                 n.rep = input$n.rep,
+                seed = input$seed1,
                 trueps = sm,
                 size.cohort = input$size.cohort,
                 size.level = input$size.level,
@@ -353,6 +359,7 @@ shinyServer(function(input, output, session) {
             p.data$size.level <- input$size.level;
             p.data$n.rep <- input$n.rep;
             p.data$n.cores <- n.cores;
+            p.data$seed <- input$seed1
             
             output$simulationResult <- renderUI({
                 fluidRow(
@@ -500,7 +507,7 @@ shinyServer(function(input, output, session) {
                             prev.res   <- NULL;
                         }
                         
-                        plot(vtInterim(cur.obs.y, prev.obs.y = prev.obs.y, prev.res = prev.res, dec.cut = decisions[1:3], etas = decisions[4:5]));
+                        plot(vtInterim(cur.obs.y, prev.obs.y = prev.obs.y, prev.res = prev.res, dec.cut = decisions[1:3], etas = decisions[4:5], seed = input$seed2));
                     }, height = 400, width = 400, bg = 'transparent')
                 })
             }
@@ -580,6 +587,8 @@ shinyServer(function(input, output, session) {
         export$scenarioInput <- input$scenarioInput;
         export$scenarioRho <- input$scenarioRho;
         export$rho <- input$rho;
+        export$seed1 <- input$seed1;
+        export$seed2 <- input$seed2;
         
         osm <- array(0, dim = c(10, 4));
         om <- array(0, dim = c(10, 4));
@@ -762,6 +771,23 @@ shinyServer(function(input, output, session) {
                     step = 1
                 )
                 
+                updateNumericInput(
+                    session,
+                    inputId = "seed1",
+                    label = "Seed",
+                    value = export$seed1,
+                    step = 1
+                )
+                
+                updateNumericInput(
+                    session,
+                    inputId = "seed2",
+                    label = "Seed",
+                    value = export$seed2,
+                    step = 1
+                )
+               
+                
                 for (i in 1:10) {
                     for (j in 1:3) {
                         updateNumericInput(
@@ -854,6 +880,7 @@ shinyServer(function(input, output, session) {
         result$currentLevel <- p.data$currentLevel;
         result$sm <- p.data$sm;
         result$rst <- p.data$rst;
+        result$seed1 <- p.data$seed1
         
         return(result);
     })

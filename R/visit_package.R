@@ -209,6 +209,8 @@ NULL
 #'
 #' @param digits Digits for print
 #'
+#' @param seed Random seed
+#'
 #' @param ... Reserved parameters
 #'
 NULL

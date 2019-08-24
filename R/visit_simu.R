@@ -278,6 +278,7 @@ vtSingleTrial <- function(trueps,
 #' @rdname vtSimu
 #'
 #' @param n.rep Number of repetitions
+#' @param seed Seed
 #' @param ... Optional parameters for \code{\link{vtSingleTrial}}
 #' @param n.cores Number of cores for parallel computations
 #' @param update.progress Reserved parameter for Shiny GUI
@@ -299,7 +300,13 @@ vtSingleTrial <- function(trueps,
 #'
 #' @export
 #'
-vtSimu <- function(n.rep=100, ..., n.cores=1, update.progress=NULL) {
+vtSimu <- function(n.rep=100, seed=NULL, ..., n.cores=1, update.progress=NULL) {
+
+    if (!is.null(seed)) {
+        old_seed <- .Random.seed;
+        set.seed(seed)
+    }
+    
     if ("PROGRESS" %in% toupper(class(update.progress)))
         update.progress$set(value=1, detail=paste(""));
 
@@ -316,6 +323,11 @@ vtSimu <- function(n.rep=100, ..., n.cores=1, update.progress=NULL) {
                      }, mc.cores=n.cores);
 
     class(rst) <- get.const()$CLSSIMU;
+
+    if (!is.null(seed)) {
+        set.seed(old_seed);
+    }
+    
     rst
 }
 

@@ -384,22 +384,29 @@ page.simu_options <- function() {
                         style = 'margin-left: 20px; border-bottom: 2px solid #E3E3E3; margin-right: 20px;'
                     ),
                     fluidRow(
-                        column(5,
+                        column(4,
                             numericInput(
                                 inputId = "n.rep",
                                 label = "Number of Replications",
                                 value = 100,
                                 min = 1,
                                 step = 1
-                            ),
-                            offset = 1
+                            )
                         ),
-                        column(5,
+                        column(4,
                             numericInput(
                                 inputId = "n.cores",
                                 label = "Number of Cores",
                                 value = 1,
                                 min = 1,
+                                step = 1
+                            )
+                        ),
+                        column(4,
+                            numericInput(
+                                inputId = "seed1",
+                                label = "Seed",
+                                value = 10000,
                                 step = 1
                             )
                         ),
@@ -685,6 +692,12 @@ page.analysis <- function() {
                                 value = NULL,
                                 min = 1,
                                 max = 10,
+                                step = 1
+                            ),
+                            numericInput(
+                                inputId = "seed2",
+                                label = "Seed",
+                                value = 10000,
                                 step = 1
                             ),
                             style = 'margin-left: 20px;'

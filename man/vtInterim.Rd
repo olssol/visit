@@ -6,7 +6,8 @@
 \usage{
 vtInterim(cur.obs.y, prev.obs.y = NULL, prev.res = NULL,
   etas = c(0.1, 0.3), dec.cut = 0.65, priors = NULL,
-  prob.mdl = c("NONPARA", "NONPARA+", "PARA", "PARA+"), ...)
+  prob.mdl = c("NONPARA", "NONPARA+", "PARA", "PARA+"), seed = NULL,
+  ...)
 }
 \arguments{
 \item{cur.obs.y}{Observed data from the current level, which is a vector of
@@ -43,6 +44,8 @@ than \eqn{3}, it is repeated to have \eqn{3} elements. See
 \item{PARA+: }{partially parametric+ model} }
 
 Default value is \code{NONPARA}. See \code{\link{visit}} for details.}
+
+\item{seed}{Random seed}
 
 \item{...}{Additional arguments for \code{\link{vtPost}}}
 }

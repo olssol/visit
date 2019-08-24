@@ -139,7 +139,12 @@ vtInterim <- function(cur.obs.y, prev.obs.y = NULL, prev.res = NULL,
                       dec.cut     = 0.65,
                       priors      = NULL,
                       prob.mdl    = c("NONPARA", "NONPARA+", "PARA", "PARA+"),
+                      seed        = NULL,
                       ...) {
+
+    if (!is.null(seed)) {
+        old_seed <- set.seed(seed);
+    }
 
     prob.mdl <- match.arg(prob.mdl);
 
@@ -153,8 +158,14 @@ vtInterim <- function(cur.obs.y, prev.obs.y = NULL, prev.res = NULL,
         stop("Please provide either prev.obs.y or prev.res");
     }
 
-    ##decision
+    ## decision
     rst.dec  <- vtDecMap(post.smp, etas, prev.res=prev.res, dec.cut=dec.cut);
+
+    ## reset random see
+    if (!is.null(seed)) {
+        set.seed(old_seed);
+    }
+
     rst.dec
 }
 
