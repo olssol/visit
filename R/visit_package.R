@@ -6,6 +6,8 @@
 #' @useDynLib visit, .registration = TRUE
 #'
 #' @importFrom rstan sampling extract stanc rstan_options traceplot stan_rhat
+#' @importFrom rstantools rstan_config
+#' @importFrom RcppParallel RcppParallelLibs
 #' @importFrom grDevices colors
 #' @importFrom graphics axis box legend lines par plot points text arrows grid rect
 #' @importFrom parallel detectCores
