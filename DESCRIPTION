@@ -1,5 +1,5 @@
 Package: visit
-Title: Vaccine Phase I Design with Simultaneous Evaluation of Immnunogeneicity and Toxicity
+Title: Vaccine Phase I Design with Simultaneous Evaluation of Immunogenicity and Toxicity
 Version: 2.2
 Author: Zilu Wang [aut, cre]
     Chenguang Wang [aut, cre]
@@ -9,7 +9,7 @@ Author: Zilu Wang [aut, cre]
 Maintainer: Chenguang Wang <cwang68@jhmi.edu>
 Description: This package implements a Bayesian Phase I cancer vaccine
     trial design that allows simultaneous evaluation of safety and
-    immunogenicity outcomes. See Wang et. al. (2019) <DOI:10.1002/sim.8021>
+    immunogenicity outcomes. See Wang et al. (2019) <DOI:10.1002/sim.8021>
     for further details.
 Depends:
     methods,
