@@ -1,5 +1,5 @@
 Package: visit
-Title: Vaccine Phase I Design with Simultaneous Evaluation of Immnunogeneicity and Toxicity
+Title: Vaccine Phase I Design with Simultaneous Evaluation of Immunogenicity and Toxicity
 Version: 2.2
 Author: Zilu Wang [aut, cre]
     Chenguang Wang [aut, cre]
@@ -7,9 +7,19 @@ Author: Zilu Wang [aut, cre]
     Richard BS Roden  [aut]
     Trustees of Columbia University [cph] (tools/make_cpp.R, R/stanmodels.R)
 Maintainer: Chenguang Wang <cwang68@jhmi.edu>
-Description: This package implements a Bayesian Phase I cancer vaccine
+Description: 
+    Phase I clinical trials are the first step in drug development to test
+    a new drug or drug combination on humans. Typical designs of Phase I 
+    trials use toxicity as the primary endpoint and aim to find the maximum 
+    tolerable dosage. However, these designs are poorly applicable for the 
+    development of cancer therapeutic vaccines because the expected safety 
+    concerns for these vaccines are not as much as cytotoxic agents. The 
+    primary objectives of a cancer therapeutic vaccine phase I trial thus 
+    often include determining whether the vaccine shows biologic activity 
+    and the minimum dose necessary to achieve a full immune or even clinical 
+    response. This package implements a Bayesian Phase I cancer vaccine
     trial design that allows simultaneous evaluation of safety and
-    immunogenicity outcomes. See Wang et. al. (2019) <DOI:10.1002/sim.8021>
+    immunogenicity outcomes. See Wang et al. (2019) <DOI:10.1002/sim.8021>
     for further details.
 Depends:
     methods,
