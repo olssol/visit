@@ -33,16 +33,16 @@ data {
   //total dose levels
   int<lower=0>  NDOSE;
   //benchmark tox rate for each level
-  real<lower=0> TAU[NDOSE];
+  array[NDOSE] real<lower=0> TAU;
   //parameters for prior dist
-  real          PAR[NDOSE,4]; //a,b,c,d
+  array[NDOSE,4] real          PAR; //a,b,c,d
   //std for alpha prior
   real<lower=0> SDALPHA;
 
   //number of dose levels with observations
   int<lower=0> NOBSLEVEL;
   //observed data: 00 01 10 11
-  int<lower=0> OBSY[NOBSLEVEL+1,4]; 
+  array[NOBSLEVEL+1,4] int<lower=0> OBSY; 
 
   //model selection
   int<lower=0>  SINGLEALPHA;
@@ -51,14 +51,14 @@ data {
 }
 
 parameters {
-  real          alpha[NDOSE];
-  real<lower=0> rho[NDOSE];
-  real<lower=0.0000001, upper=0.99999999> pres[NDOSE];
+  array[NDOSE] real          alpha;
+  array[NDOSE] real<lower=0> rho;
+  array[NDOSE] real<lower=0.0000001, upper=0.99999999> pres;
 }
 
 transformed parameters{
-  real<lower=0.0000001, upper=0.99999999> ptox[NDOSE];
-  vector<lower=0, upper=1>[4] theta[NDOSE];
+  array[NDOSE] real<lower=0.0000001, upper=0.99999999> ptox;
+  array[NDOSE] vector<lower=0, upper=1>[4] theta;
 
   for (i in 1:NDOSE) {
     real r;
